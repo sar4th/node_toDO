@@ -8,10 +8,12 @@ const app = express()
 app.use(cookieParser())
 app.use(express.json())
 app.use(cors({
-    origin:[process.env.FRONT_END_URL],
-    methods:["GET","POST","PUT","DELETE"],
-    credentials:true
-}))
+    origin: 'http://localhost:3000', // replace with your front-end URL
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'Authorization'],
+    credentials: true
+  }));
+  
 app.use(UserRouter)
 app.use(TaskRouter)
 
